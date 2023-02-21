@@ -1,14 +1,13 @@
 import * as msal from "@azure/msal-node";
 
 /**
- *
  * @param clientId
  * @param clientSecret
  * @param aadEndpoint AZURE ACTIVE DIRECTORY // https://login.microsoftonline.com/
  * @param graphEndpoint https://graph.microsoft.com/
  * @returns
  */
-async function getToken(
+async function getAccessToken(
   clientId: string,
   clientSecret: string,
   tenantId: string,
@@ -31,4 +30,4 @@ async function getToken(
   return await cca.acquireTokenByClientCredential(tokenRequest);
 }
 
-export { getToken };
+export { getAccessToken };

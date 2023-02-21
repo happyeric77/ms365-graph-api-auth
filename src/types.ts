@@ -1,3 +1,18 @@
+export interface ISites {
+  "@odata.context": string;
+  value: [ISite];
+}
+
+export interface ISite {
+  createdDateTime: string;
+  id: string;
+  lastModifiedDateTime: string;
+  name: string;
+  webUrl: string;
+  displayName: string;
+  root: Object;
+  siteCollection: [Object];
+}
 export interface IListItems {
   "@odata.context": string;
   value: IListItem[];
@@ -14,6 +29,7 @@ export interface IListItem {
   lastModifiedBy: [Object];
   parentReference: [Object];
   contentType: [Object];
+  fields?: Object; // ONLY SHOWS WHEN QUERY SINGLE ITEM BY ID
 }
 
 export interface ILists {

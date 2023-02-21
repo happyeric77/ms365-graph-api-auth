@@ -3,9 +3,13 @@ import { IListItems, ILists } from "./types";
 
 class ApiEndpoint {
   static users = "v1.0/users";
-  static site = `v1.0/sites`;
-  static listInSite = (id: string) => `v1.0/sites/${id}/lists`;
+  static sites = `v1.0/sites`;
+  static site = (id: string) => `v1.0/sites/${id}`;
+  static listsInSite = (id: string) => `v1.0/sites/${id}/lists`;
+  static listInSite = (listId: string, siteId: string) => `v1.0/sites/${siteId}/lists/${listId}`;
   static itemsInListInSite = (listId: string, siteId: string) => `v1.0/sites/${siteId}/lists/${listId}/items`;
+  static itemInListInSite = (listId: string, siteId: string, itemId: string) =>
+    `v1.0/sites/${siteId}/lists/${listId}/items/${itemId}`;
 }
 
 interface ICallApi {
@@ -37,11 +41,12 @@ const callApi = async (params: ICallApi, graphEndpoint?: string): Promise<any> =
           await axios.get(graphEndpoint ? graphEndpoint : "https://graph.microsoft.com/" + params.endpoint, options)
         ).data;
         break;
-      case "post":
+      case "post": // TODO
         result = await (
           await axios.post(
             graphEndpoint ? graphEndpoint : "https://graph.microsoft.com/" + params.endpoint,
-            params.postData
+            params.postData,
+            options
           )
         ).data;
         break;

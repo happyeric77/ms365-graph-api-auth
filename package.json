@@ -1,17 +1,34 @@
 {
-  "name": "msal-node-console",
-  "version": "1.0.0",
-  "description": "Command line app showing how to use client credential grant to acquire tokens from Azure AD",
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "ts-node ./test/test.ts"
+  "name": "ms365-graph-api-auth",
+  "version": "0.0.0",
+  "description": "Get the authenticated Azure app to CRUD Sharepoint by Microsoft Graph API",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "repository": {
+    "type": "git",
+    "url": "TODO"
   },
-  "author": "",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "scripts": {
+    "test": "ts-node ./test/test.ts",
+    "build": "rm -rf dist/ && yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "author": "Happyeric77",
   "license": "MIT",
   "dependencies": {
     "@azure/msal-node": "^1.14.1",
-    "axios": "^1.0.0",
-    "dotenv": "^16.0.3",
-    "yargs": "^17.6.0"
+    "axios": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

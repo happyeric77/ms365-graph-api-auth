@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "outDir": "./dist/esm",
+    "declaration": true,
+    "declarationMap": true
+    // "forceConsistentCasingInFileNames": true
+    // "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
