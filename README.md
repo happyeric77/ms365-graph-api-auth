@@ -8,7 +8,7 @@ The project is built on top of [Azure auth example](https://github.com/Azure-Sam
 
 ## Register a Azure client app. Check the [tutorial here](TODO)
 
-## Install [The Package](TODO)
+## Install [The Package](https://www.npmjs.com/package/ms365-graph-api-auth)
 
 ```
 npm install ms365-graph-api-auth
