@@ -1,12 +1,12 @@
 {
   "name": "ms365-graph-api-auth",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Get the authenticated Azure app to CRUD Sharepoint by Microsoft Graph API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "repository": {
     "type": "git",
-    "url": "TODO"
+    "url": "https://github.com/happyeric77/ms365-graph-api-auth.git"
   },
   "exports": {
     "import": "./dist/esm/index.js",
