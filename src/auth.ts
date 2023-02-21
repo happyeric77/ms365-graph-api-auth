@@ -1,16 +1,30 @@
 import * as msal from "@azure/msal-node";
 
-async function getToken() {
+/**
+ *
+ * @param clientId
+ * @param clientSecret
+ * @param aadEndpoint AZURE ACTIVE DIRECTORY // https://login.microsoftonline.com/
+ * @param graphEndpoint https://graph.microsoft.com/
+ * @returns
+ */
+async function getToken(
+  clientId: string,
+  clientSecret: string,
+  tenantId: string,
+  aadEndpoint?: string,
+  graphEndpoint?: string
+) {
   const msalConfig = {
     auth: {
-      clientId: process.env.CLIENT_ID!,
-      authority: process.env.AAD_ENDPOINT! + process.env.TENANT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
+      clientId,
+      authority: aadEndpoint ? aadEndpoint : "https://login.microsoftonline.com/" + tenantId,
+      clientSecret,
     },
   };
 
   const tokenRequest = {
-    scopes: [process.env.GRAPH_ENDPOINT + ".default"], // e.g. 'https://graph.microsoft.com/.default'
+    scopes: [graphEndpoint ? graphEndpoint : "https://graph.microsoft.com/" + ".default"], // e.g. 'https://graph.microsoft.com/.default'
   };
   const cca = new msal.ConfidentialClientApplication(msalConfig);
 

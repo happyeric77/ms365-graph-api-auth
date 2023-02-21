@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { IListItems, ILists } from "./types";
 
 class ApiEndpoint {
   static users = "v1.0/users";
@@ -16,7 +17,7 @@ interface ICallApi {
   headers?: { [key: string]: string };
 }
 
-const callApi = async (params: ICallApi): Promise<any> => {
+const callApi = async (params: ICallApi, graphEndpoint?: string): Promise<any> => {
   params.method = params.method ? params.method : "get";
   const options: AxiosRequestConfig = {
     headers: {
@@ -32,10 +33,17 @@ const callApi = async (params: ICallApi): Promise<any> => {
     let result: any;
     switch (params.method) {
       case "get":
-        result = (await axios.get(process.env.GRAPH_ENDPOINT! + params.endpoint, options)).data;
+        result = (
+          await axios.get(graphEndpoint ? graphEndpoint : "https://graph.microsoft.com/" + params.endpoint, options)
+        ).data;
         break;
       case "post":
-        result = await (await axios.post(process.env.GRAPH_ENDPOINT! + params.endpoint, params.postData)).data;
+        result = await (
+          await axios.post(
+            graphEndpoint ? graphEndpoint : "https://graph.microsoft.com/" + params.endpoint,
+            params.postData
+          )
+        ).data;
         break;
       default:
     }

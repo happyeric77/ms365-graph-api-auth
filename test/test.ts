@@ -1,12 +1,13 @@
-import { ApiEndpoint, callApi } from "../src/fetch";
-import { IListItems, ILists } from "../src/types";
-import { getToken } from "../src/auth";
+require("dotenv").config();
+import { ApiEndpoint, callApi, IListItems, ILists, getToken } from "../src";
 
 // Credentials
-
+const tenantId = process.env.TENANT_ID;
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
 (async () => {
   try {
-    const authResponse = await getToken(clientId, clientSecret, tenantId);
+    const authResponse = await getToken(clientId!, clientSecret!, tenantId!);
     if (!authResponse) return;
     const res = await callApi({
       endpoint: ApiEndpoint.site,
