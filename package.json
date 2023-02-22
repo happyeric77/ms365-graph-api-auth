@@ -1,6 +1,6 @@
 {
   "name": "ms365-graph-api-auth",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Get the authenticated Azure app to CRUD Sharepoint by Microsoft Graph API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
