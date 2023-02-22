@@ -18,6 +18,9 @@ export interface IListItems {
   value: IListItem[];
 }
 
+export interface IListItemField {
+  [key: string]: any;
+}
 export interface IListItem {
   "@odata.etag": string;
   createdDateTime: string;
@@ -29,7 +32,7 @@ export interface IListItem {
   lastModifiedBy: [Object];
   parentReference: [Object];
   contentType: [Object];
-  fields?: Object; // ONLY SHOWS WHEN QUERY SINGLE ITEM BY ID
+  fields?: IListItemField; // ONLY SHOWS WHEN QUERY SINGLE ITEM BY ID
 }
 
 export interface ILists {
