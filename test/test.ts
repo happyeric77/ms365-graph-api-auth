@@ -14,7 +14,7 @@ const clientSecret = process.env.CLIENT_SECRET;
     //1. GET SHAREPOINT SITES
     console.log("1. GET SHAREPOINT SITES ***");
     // SEARCH CERTAIN SITE BY NAME.
-    const mySite = await query.getSites("colorfullife");
+    const mySite = await query.getSites("<your-sharepoint-site-name>");
     console.log({ sites: mySite.value.map((site) => ({ name: site.name, displayName: site.displayName })) });
     // FETCH ALL SITES : await query.getSites();
 

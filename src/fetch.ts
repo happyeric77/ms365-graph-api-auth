@@ -13,11 +13,12 @@ class GraphApiQuery {
   constructor(private accessToken: string) {}
 
   async getSites(siteName?: string): Promise<ISites> {
-    const sites: ISites = await this.callApi({
+    let sites: ISites = await this.callApi({
       endpoint: `v1.0/sites`,
       accessToken: this.accessToken,
-      params: siteName ? { search: siteName } : undefined,
+      // params: siteName ? { search: siteName } : undefined,
     });
+    if (siteName) sites = { ...sites, value: sites.value.filter((site) => site.name === siteName) };
     return sites;
   }
   async getListsInSite(siteId: string, listName?: string) {

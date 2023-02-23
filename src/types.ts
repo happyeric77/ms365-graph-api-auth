@@ -1,6 +1,6 @@
 export interface ISites {
   "@odata.context": string;
-  value: [ISite];
+  value: ISite[];
 }
 
 export interface ISite {

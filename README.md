@@ -1,4 +1,9 @@
-# Microsoft 365 GraphAPI auth tool
+# [Microsoft 365 GraphAPI auth tool](https://www.npmjs.com/package/ms365-graph-api-auth)
+
+checkout tutorials:
+
+1. [Video](https://youtu.be/sXW3G8gtlWs)
+2. [Blog](https://hackmd.io/-owYkzYpSAyIOQA9hNHbCQ?edit)
 
 This package allows you to get the authenticated Azure app to CRUD Sharepoint by Microsoft Graph API.
 
@@ -6,7 +11,7 @@ The project is built on top of [Azure auth example](https://github.com/Azure-Sam
 
 # How to use
 
-## Register a Azure client app. Check the [tutorial here](TODO)
+## Register a Azure client app. Check the [tutorial here](https://youtu.be/sXW3G8gtlWs)
 
 ## Install [The Package](https://www.npmjs.com/package/ms365-graph-api-auth)
 
@@ -20,7 +25,7 @@ yarn add ms365-graph-api-auth
 
 ```
 require("dotenv").config();
-import { getAccessToken, GraphApiQuery } from "../src";
+import { getAccessToken, GraphApiQuery } from "ms365-graph-api-auth";
 
 // Credentials
 const tenantId = process.env.TENANT_ID;
