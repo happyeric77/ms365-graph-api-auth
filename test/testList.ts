@@ -14,14 +14,14 @@ const clientSecret = process.env.CLIENT_SECRET;
     //1. GET SHAREPOINT SITES
     console.log("1. GET SHAREPOINT SITES ***");
     // SEARCH CERTAIN SITE BY NAME.
-    const mySite = await query.getSites("<your-sharepoint-site-name>");
+    const mySite = await query.getSites(process.env.SITE_NAME);
     console.log({ sites: mySite.value.map((site) => ({ name: site.name, displayName: site.displayName })) });
     // FETCH ALL SITES : await query.getSites();
 
     //2. GET LISTS IN CERTAIN SHAREPOINT SITE
     console.log("\n\n\n2. GET LISTS IN CERTAIN SHAREPOINT SITE ***");
     // SEARCH CERTAIN LIST BY NAME
-    const myList = await query.getListsInSite(mySite.value[0].id, "Work progress tracker");
+    const myList = await query.getListsInSite(mySite.value[0].id, process.env.LIST_NAME);
     console.log(myList.value.map((list) => ({ name: list.name, displayName: list.displayName })));
 
     //3. GET ITEMS IN LIST
@@ -49,12 +49,9 @@ const clientSecret = process.env.CLIENT_SECRET;
     const updatedItem = await query.patchUpdateListItem(mySite.value[0].id, myList.value[0].id, createdItem.id, data);
     console.log(updatedItem);
 
-    //4.3 DELETE // https://learn.microsoft.com/ja-jp/graph/api/listitem-delete?view=graph-rest-1.0&tabs=http
-    // It will not be working using application permission.
-    // The only way to delete objects is using user delegated auth with a token from a user that has sufficient permissions to do so (generally an admin).
-    console.log("\n\n\n4.3 DELETE ITEM IN LIST ***");
-    // const res = await query.deleteListItem(mySite.value[0].id, myList.value[0].id, items.value[0].id);
-    // console.log(res);
+    //4.3 DELETE // https://learn.microsoft.com/ja-jp/graph/api/listitem-delete?view=graph-rest-1.0&tabs=httpconsole.log("\n\n\n4.3 DELETE ITEM IN LIST ***");
+    const res = await query.deleteListItem(mySite.value[0].id, myList.value[0].id, items.value[0].id);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }

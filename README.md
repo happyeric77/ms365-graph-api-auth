@@ -9,6 +9,9 @@ This package allows you to get the authenticated Azure app to CRUD Sharepoint by
 
 The project is built on top of [Azure auth example](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
 
+> **NOTE**
+> This library is only available on Nodejs environment. Not for browser.
+
 # How to use
 
 ## Register a Azure client app. Check the [tutorial here](https://youtu.be/sXW3G8gtlWs)
@@ -89,6 +92,12 @@ const clientSecret = process.env.CLIENT_SECRET;
 
 ```
 
-# TODO (Open to contribute)
+# Release note
 
-- Only support part of graphAPI (Sites/ Lists/ Items)
+## 20230125
+
+- Fix delete issue
+- Supports DriveItem fetch, create, upload, and delete
+- Add test case for Drive & DriveItem
+
+> Any contribution will be welcome
